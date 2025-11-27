@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Каталог товаров</h1>
+
+<ul>
+    {% for product in products %}
+    <li>
+        <a href="{% url 'product_detail' product.pk %}">
+            {{ product.name }} — {{ product.price }} ₽
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

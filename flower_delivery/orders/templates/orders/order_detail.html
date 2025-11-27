@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Заказ #{{ order.id }}{% endblock %}
+
+{% block content %}
+<h1>Заказ #{{ order.id }}</h1>
+
+<p>Статус: {{ order.get_status_display }}</p>
+<p>Дата: {{ order.created_at }}</p>
+
+<h3>Товары:</h3>
+<ul>
+    {% for item in order.items.all %}
+    <li>{{ item.product.name }} — {{ item.quantity }} шт — {{ item.total }} ₽</li>
+    {% endfor %}
+</ul>
+
+<h3>Итого: {{ order.total_price }} ₽</h3>
+
+<a href="{% url 'orders_list' %}" class="btn btn-primary">Назад</a>
+{% endblock %}
