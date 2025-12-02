@@ -17,6 +17,8 @@ class Order(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    address = models.CharField(max_length=255, default="Не указан")  # дефолт для миграций
+    comment = models.TextField(blank=True, null=True)  # необязательное поле
 
     def __str__(self):
         return f"Заказ #{self.id} от {self.user.username}"
@@ -38,4 +40,5 @@ class OrderItem(models.Model):
         return self.product.price * self.quantity
 
     def __str__(self):
-        return f"{self.product.name} x {self.quantity}"
+        return f"{self.product.name} x {self.quantity}"  # <-- здесь строка закрыта
+

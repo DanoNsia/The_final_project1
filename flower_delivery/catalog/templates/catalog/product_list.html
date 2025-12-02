@@ -1,17 +1,29 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
+{% block title %}Каталог{% endblock %}
 
 {% block content %}
-<h1>Каталог товаров</h1>
-
-<ul>
+<h2>Каталог букетов</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
     {% for product in products %}
-    <li>
-        <a href="{% url 'product_detail' product.pk %}">
-            {{ product.name }} — {{ product.price }} ₽
-        </a>
-    </li>
+        <div class="col">
+            <div class="card h-100">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% elif product.image_url %}
+                    <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300x200?text=Нет+изображения" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <strong>{{ product.price }} ₽</strong>
+                </div>
+            </div>
+        </div>
     {% endfor %}
-</ul>
-
+</div>
 {% endblock %}

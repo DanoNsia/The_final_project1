@@ -1,20 +1,26 @@
-{% extends 'base.html' %}
-{% block title %}Заказ #{{ order.id }}{% endblock %}
-
+{% extends "base.html" %}
 {% block content %}
-<h1>Заказ #{{ order.id }}</h1>
+<div class="container mt-4">
+    <h2>Заказ №{{ order.id }}</h2>
 
-<p>Статус: {{ order.get_status_display }}</p>
-<p>Дата: {{ order.created_at }}</p>
+    <p><strong>Дата создания:</strong> {{ order.created_at|date:"d.m.Y H:i" }}</p>
+    <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
+    <p><strong>Адрес доставки:</strong> {{ order.address }}</p>
+    <p><strong>Комментарий:</strong> {{ order.comment|default:"—" }}</p>
 
-<h3>Товары:</h3>
-<ul>
-    {% for item in order.items.all %}
-    <li>{{ item.product.name }} — {{ item.quantity }} шт — {{ item.total }} ₽</li>
-    {% endfor %}
-</ul>
+    <h4 class="mt-4">Товары:</h4>
+    <ul class="list-group">
+        {% for item in order.items.all %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>{{ item.product.name }}</strong><br>
+                Количество: {{ item.quantity }}
+            </div>
+            <span>{{ item.total }} ₽</span>
+        </li>
+        {% endfor %}
+    </ul>
 
-<h3>Итого: {{ order.total_price }} ₽</h3>
-
-<a href="{% url 'orders_list' %}" class="btn btn-primary">Назад</a>
+    <h3 class="mt-4">Итоговая сумма: {{ order.total_price }} ₽</h3>
+</div>
 {% endblock %}

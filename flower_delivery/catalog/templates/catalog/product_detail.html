@@ -1,14 +1,62 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 
 {% block content %}
-<h1>{{ product.name }}</h1>
+<div class="product-detail">
+    <div class="image-block">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <div class="no-image">Нет изображения</div>
+        {% endif %}
+    </div>
 
-<p>{{ product.description }}</p>
-<p>Цена: {{ product.price }} ₽</p>
+    <div class="info-block">
+        <h1>{{ product.name }}</h1>
+        <p class="price">{{ product.price }} ₽</p>
 
-{% if product.image %}
-<img src="{{ product.image.url }}" width="300">
-{% endif %}
+        <p class="description">{{ product.description|linebreaks }}</p>
 
+        <a href="{% url 'product_list' %}" class="back-btn">← Назад к каталогу</a>
+    </div>
+</div>
+
+<style>
+.product-detail {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.image-block img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.info-block {
+    max-width: 500px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #6c757d;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: #5a6268;
+}
+</style>
 {% endblock %}
+

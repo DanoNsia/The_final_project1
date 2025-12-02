@@ -1,19 +1,24 @@
-{% extends 'base.html' %}
-{% block title %}Мои заказы{% endblock %}
-
+{% extends "base.html" %}
 {% block content %}
-<h1>Мои заказы</h1>
+<div class="container mt-4">
+    <h2>Мои заказы</h2>
 
-{% for order in orders %}
-<div class="card mb-3">
-    <div class="card-body">
-        <h5>Заказ #{{ order.id }}</h5>
-        <p>Статус: {{ order.get_status_display }}</p>
-        <p>Создан: {{ order.created_at }}</p>
-        <a href="{% url 'order_detail' order.id %}" class="btn btn-secondary">Подробнее</a>
-    </div>
+    {% if orders %}
+    <ul class="list-group mt-4">
+        {% for order in orders %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>Заказ №{{ order.id }}</strong><br>
+                Дата: {{ order.created_at|date:"d.m.Y H:i" }}<br>
+                Статус: {{ order.get_status_display }}
+            </div>
+            <a href="{% url 'orders:order_detail' order.id %}" class="btn btn-primary">Подробнее</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>У вас пока нет заказов.</p>
+    {% endif %}
 </div>
-{% empty %}
-<p>У вас пока нет заказов.</p>
-{% endfor %}
 {% endblock %}
+
