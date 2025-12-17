@@ -23,4 +23,17 @@
 
     <h3 class="mt-4">Итоговая сумма: {{ order.total_price }} ₽</h3>
 </div>
+<div class="mt-4 d-flex gap-2">
+    {% if order.status == "new" %}
+        <a href="{% url 'orders:cancel_order' order.id %}"
+           class="btn btn-danger">
+            Отменить заказ
+        </a>
+    {% endif %}
+
+    <a href="{% url 'orders:repeat_order' order.id %}"
+       class="btn btn-primary">
+        Повторить заказ
+    </a>
+</div>
 {% endblock %}

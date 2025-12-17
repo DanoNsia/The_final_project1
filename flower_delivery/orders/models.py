@@ -8,6 +8,7 @@ class Order(models.Model):
         ('new', 'Новый'),
         ('processing', 'В обработке'),
         ('done', 'Выполнен'),
+        ('canceled', 'Отменён'),
     ]
 
     user = models.ForeignKey(

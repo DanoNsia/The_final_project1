@@ -1,9 +1,12 @@
 {% extends "base.html" %}
+
+{% block title %}Корзина{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
     <h2>Корзина</h2>
 
-    {% if cart|length == 0 %}
+    {% if items|length == 0 %}
         <p>Ваша корзина пуста.</p>
         <a href="{% url 'catalog:product_list' %}" class="btn btn-primary mt-3">Перейти к каталогу</a>
     {% else %}
@@ -19,14 +22,15 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in cart %}
+            {% for item in items %}
             <tr>
                 <td>{{ item.product.name }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.product.price }} ₽</td>
                 <td>{{ item.total }} ₽</td>
                 <td>
-                    <a href="{% url 'cart:remove_from_cart' item.product.id %}" class="btn btn-danger btn-sm">
+                    <a href="{% url 'cart:remove_from_cart' item.id %}"
+                       class="btn btn-danger btn-sm">
                         Удалить
                     </a>
                 </td>
@@ -35,7 +39,7 @@
         </tbody>
     </table>
 
-    <h4 class="mt-3">Итого: {{ cart.total_price }} ₽</h4>
+    <h4 class="mt-3">Итого: {{ total }} ₽</h4>
 
     <div class="mt-4">
         <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Продолжить покупки</a>

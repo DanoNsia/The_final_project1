@@ -7,7 +7,15 @@ from catalog.models import Product
 @login_required
 def cart_view(request):
     cart = request.user.cart
-    return render(request, "cart/cart.html", {"cart": cart})
+    items = cart.items.all()        # правильное получение товаров
+    total = sum(i.total for i in items)
+
+    return render(request, "cart/cart.html", {
+        "cart": cart,
+        "items": items,
+        "total": total,
+    })
+
 
 
 @login_required
