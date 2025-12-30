@@ -4,7 +4,7 @@ from .cart import Cart
 from .models import Order, OrderItem
 from .forms import CheckoutForm
 from django.shortcuts import get_object_or_404
-
+from cart.models import CartItem
 
 @login_required
 def cart_view(request):
@@ -33,12 +33,16 @@ def checkout(request):
     if request.method == "POST":
         form = CheckoutForm(request.POST)
         if form.is_valid():
+
+            # 1️⃣ создаём заказ как черновик
             order = Order.objects.create(
                 user=request.user,
                 address=form.cleaned_data["address"],
-                comment=form.cleaned_data.get("comment", "")
+                comment=form.cleaned_data.get("comment", ""),
+                status="draft"
             )
 
+            # 2️⃣ добавляем товары
             for item in cart.items.all():
                 OrderItem.objects.create(
                     order=order,
@@ -46,7 +50,12 @@ def checkout(request):
                     quantity=item.quantity
                 )
 
-            cart.items.all().delete()  # очистка корзины
+            # 3️⃣ очищаем корзину
+            cart.items.all().delete()
+
+            # 4️⃣ ПОДТВЕРЖДАЕМ заказ (вот тут Telegram)
+            order.status = "new"
+            order.save()
 
             return redirect("orders:orders_list")
     else:
@@ -56,6 +65,7 @@ def checkout(request):
         "cart": cart,
         "form": form
     })
+
 
 
 @login_required
@@ -94,12 +104,15 @@ def repeat_order(request, order_id):
 
     cart = request.user.cart
 
+    # 1️⃣ очищаем корзину
+    cart.items.all().delete()
+
+    # 2️⃣ копируем товары из заказа
     for item in order.items.all():
-        cart_item, created = cart.items.get_or_create(
-            product=item.product
+        CartItem.objects.create(
+            cart=cart,
+            product=item.product,
+            quantity=item.quantity
         )
-        cart_item.quantity += item.quantity
-        cart_item.save()
 
     return redirect("cart:cart_view")
-

@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'orders.apps.OrdersConfig',
     'cart',
-    'orders',
     'catalog',
     'accounts',
     'django.contrib.admin',
@@ -132,3 +132,6 @@ AUTH_USER_MODEL = "accounts.User"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+TELEGRAM_BOT_TOKEN = "Твой_токен_бота"
+TELEGRAM_ADMIN_CHAT_ID = "Админский_телеграм_id"

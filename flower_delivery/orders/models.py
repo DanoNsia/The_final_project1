@@ -5,6 +5,7 @@ from catalog.models import Product
 
 class Order(models.Model):
     STATUS_CHOICES = [
+        ('draft', 'Черновик'),
         ('new', 'Новый'),
         ('processing', 'В обработке'),
         ('done', 'Выполнен'),
