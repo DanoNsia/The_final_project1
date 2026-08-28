@@ -1,62 +1,367 @@
 {% extends "base.html" %}
 
-{% block content %}
-<div class="product-detail">
-    <div class="image-block">
-        {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-        {% else %}
-            <div class="no-image">Нет изображения</div>
-        {% endif %}
-    </div>
-
-    <div class="info-block">
-        <h1>{{ product.name }}</h1>
-        <p class="price">{{ product.price }} ₽</p>
-
-        <p class="description">{{ product.description|linebreaks }}</p>
-
-        <a href="{% url 'product_list' %}" class="back-btn">← Назад к каталогу</a>
-    </div>
-</div>
-
-<style>
-.product-detail {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-top: 20px;
-}
-
-.image-block img {
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.info-block {
-    max-width: 500px;
-}
-
-.price {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.back-btn {
-    display: inline-block;
-    padding: 8px 12px;
-    background: #6c757d;
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-}
-
-.back-btn:hover {
-    background: #5a6268;
-}
-</style>
+{% block title %}
+{{ product.name }} | Дари Цветы
 {% endblock %}
 
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row g-5 align-items-start">
+
+        <!-- Фото -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 rounded-4 overflow-hidden">
+
+                {% if product.image %}
+
+                    <img src="{{ product.image.url }}"
+                         class="img-fluid"
+                         alt="{{ product.name }}"
+                         style="height:650px;object-fit:cover;">
+
+                {% elif product.image_url %}
+
+                    <img src="{{ product.image_url }}"
+                         class="img-fluid"
+                         alt="{{ product.name }}"
+                         style="height:650px;object-fit:cover;">
+
+                {% else %}
+
+                    <img src="https://via.placeholder.com/800x900?text=Букет"
+                         class="img-fluid"
+                         alt="{{ product.name }}"
+                         style="height:650px;object-fit:cover;">
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <!-- Информация -->
+
+        <div class="col-lg-6">
+
+            <span class="badge bg-success mb-3 fs-6">
+                🌸 Всегда свежие цветы
+            </span>
+
+            <h1 class="fw-bold mb-3">
+
+                {{ product.name }}
+
+            </h1>
+
+            <div class="mb-3">
+
+                ⭐⭐⭐⭐⭐
+
+                <span class="text-muted ms-2">
+
+                    Более 100 довольных покупателей
+
+                </span>
+
+            </div>
+
+            <h2 class="display-5 fw-bold text-success mb-4">
+
+                {{ product.price }} ₽
+
+            </h2>
+
+            <div class="alert alert-light border">
+
+                <h5 class="mb-3">
+
+                    Описание
+
+                </h5>
+
+                <p class="mb-0">
+
+                    {{ product.description|linebreaks }}
+
+                </p>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-6 mb-3">
+
+                    <div class="border rounded-3 p-3 h-100">
+
+                        🚚
+
+                        <strong>
+
+                            Быстрая доставка
+
+                        </strong>
+
+                        <br>
+
+                        <small class="text-muted">
+
+                            По Курску ежедневно
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="col-6 mb-3">
+
+                    <div class="border rounded-3 p-3 h-100">
+
+                        🌹
+
+                        <strong>
+
+                            Свежие цветы
+
+                        </strong>
+
+                        <br>
+
+                        <small class="text-muted">
+
+                            Новые поставки каждый день
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="col-6 mb-3">
+
+                    <div class="border rounded-3 p-3 h-100">
+
+                        💝
+
+                        <strong>
+
+                            Бесплатная открытка
+
+                        </strong>
+
+                        <br>
+
+                        <small class="text-muted">
+
+                            Добавим поздравление
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="col-6 mb-3">
+
+                    <div class="border rounded-3 p-3 h-100">
+
+                        ⭐
+
+                        <strong>
+
+                            Гарантия качества
+
+                        </strong>
+
+                        <br>
+
+                        <small class="text-muted">
+
+                            Или вернем деньги
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="d-grid gap-3 mt-4">
+
+                {% if user.is_authenticated %}
+
+                    <a href="{% url 'cart:add_to_cart' product.pk %}"
+                       class="btn btn-success btn-lg">
+
+                        🛒 Добавить в корзину
+
+                    </a>
+
+                {% else %}
+
+                    <a href="{% url 'accounts:login' %}"
+                       class="btn btn-success btn-lg">
+
+                        Войти для оформления заказа
+
+                    </a>
+
+                {% endif %}
+
+                <a href="{% url 'catalog:product_list' %}"
+                   class="btn btn-outline-secondary btn-lg">
+
+                    ← Вернуться в каталог
+
+                </a>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h4 class="mb-4">
+
+                Контакты магазина
+
+            </h4>
+
+            <p class="mb-2">
+
+                📍 г. Курск, ул. Запольная, 41
+
+            </p>
+
+            <p class="mb-2">
+
+                ☎ +7 (951) 328-23-25
+
+            </p>
+
+            <p class="mb-2">
+
+                ☎ +7 (910) 273-75-12
+
+            </p>
+
+            <p class="text-muted">
+
+                Работаем ежедневно с 08:00 до 22:00
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <section>
+
+        <h2 class="text-center fw-bold mb-5">
+
+            Почему выбирают «Дари Цветы»?
+
+        </h2>
+
+        <div class="row text-center">
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h1>🌷</h1>
+
+                        <h5>Большой выбор</h5>
+
+                        <p class="text-muted">
+
+                            Авторские букеты на любой повод.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h1>🚚</h1>
+
+                        <h5>Доставка</h5>
+
+                        <p class="text-muted">
+
+                            Быстро доставим по Курску.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h1>💐</h1>
+
+                        <h5>Профессиональные флористы</h5>
+
+                        <p class="text-muted">
+
+                            Каждый букет собирается вручную.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h1>❤️</h1>
+
+                        <h5>Любим клиентов</h5>
+
+                        <p class="text-muted">
+
+                            Более сотни счастливых получателей цветов.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

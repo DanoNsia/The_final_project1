@@ -1,46 +1,250 @@
 {% extends "base.html" %}
 
-{% block title %}Каталог{% endblock %}
+{% block title %}
+Каталог букетов
+{% endblock %}
 
 {% block content %}
-<h2>Каталог букетов</h2>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for product in products %}
-        <div class="col">
-            <div class="card h-100">
 
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                {% elif product.image_url %}
-                    <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
-                {% else %}
-                    <img src="https://via.placeholder.com/300x200?text=Нет+изображения"
-                         class="card-img-top" alt="{{ product.name }}">
-                {% endif %}
+<!-- ================= HERO ================= -->
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                </div>
+<section class="py-5 mb-5 rounded-4 text-center bg-light shadow-sm">
 
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                    <strong class="text-primary">{{ product.price }} ₽</strong>
+    <h1 class="display-4 fw-bold mb-3">
+        🌸 Дари Цветы
+    </h1>
 
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'cart:add_to_cart' product.id %}"
-                           class="btn btn-success btn-sm">
-                           В корзину
-                        </a>
-                    {% else %}
-                        <a href="{% url 'accounts:login' %}"
-                           class="btn btn-outline-secondary btn-sm">
-                           Войти
-                        </a>
-                    {% endif %}
-                </div>
+    <p class="lead text-secondary mb-4">
+        Авторские букеты из свежих цветов с доставкой по Курску
+    </p>
 
+    <div class="row justify-content-center">
+
+        <div class="col-md-3 mb-3">
+            <div class="border rounded-3 p-3 h-100">
+                <h5>🚚 Быстрая доставка</h5>
+                <small class="text-muted">
+                    Доставим букет в течение дня
+                </small>
             </div>
         </div>
-    {% endfor %}
+
+        <div class="col-md-3 mb-3">
+            <div class="border rounded-3 p-3 h-100">
+                <h5>🌹 Свежие цветы</h5>
+                <small class="text-muted">
+                    Только свежие поставки каждый день
+                </small>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="border rounded-3 p-3 h-100">
+                <h5>🎁 Бесплатная открытка</h5>
+                <small class="text-muted">
+                    Добавим открытку с вашим текстом
+                </small>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= КАТАЛОГ ================= -->
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold mb-1">
+            Каталог букетов
+        </h2>
+
+        <p class="text-muted mb-0">
+            Выберите понравившийся букет
+        </p>
+
+    </div>
+
+    <span class="badge bg-success fs-6">
+        {{ products|length }} букетов
+    </span>
+
 </div>
+
+<div class="row g-4">
+
+{% for product in products %}
+
+<div class="col-lg-4 col-md-6">
+
+    <div class="card h-100 shadow-sm border-0">
+
+        <div class="position-relative">
+
+            {% if product.image %}
+
+                <img src="{{ product.image.url }}"
+                     class="card-img-top"
+                     style="height:320px;object-fit:cover;"
+                     alt="{{ product.name }}">
+
+            {% elif product.image_url %}
+
+                <img src="{{ product.image_url }}"
+                     class="card-img-top"
+                     style="height:320px;object-fit:cover;"
+                     alt="{{ product.name }}">
+
+            {% else %}
+
+                <img src="https://via.placeholder.com/600x500?text=Букет"
+                     class="card-img-top"
+                     style="height:320px;object-fit:cover;"
+                     alt="{{ product.name }}">
+
+            {% endif %}
+
+            <span class="badge bg-danger position-absolute top-0 end-0 m-3">
+                🌸 Новинка
+            </span>
+
+        </div>
+
+        <div class="card-body d-flex flex-column">
+
+            <h4 class="fw-bold">
+
+                {{ product.name }}
+
+            </h4>
+
+            <div class="mb-2">
+
+                ⭐⭐⭐⭐⭐
+
+            </div>
+
+            <p class="text-muted flex-grow-1">
+
+                {{ product.description|truncatechars:90 }}
+
+            </p>
+
+            <h3 class="text-success fw-bold">
+
+                {{ product.price }} ₽
+
+            </h3>
+
+        </div>
+
+        <div class="card-footer bg-white border-0">
+
+            <div class="d-grid gap-2">
+
+                <a href="{% url 'catalog:product_detail' product.pk %}"
+                   class="btn btn-outline-success">
+
+                    Подробнее
+
+                </a>
+
+                {% if user.is_authenticated %}
+
+                    <a href="{% url 'cart:add_to_cart' product.pk %}"
+                       class="btn btn-success">
+
+                        🛒 Добавить в корзину
+
+                    </a>
+
+                {% else %}
+
+                    <a href="{% url 'accounts:login' %}"
+                       class="btn btn-success">
+
+                        Войти для заказа
+
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- ================= ПРЕИМУЩЕСТВА ================= -->
+
+<section class="mt-5 py-5">
+
+    <h2 class="text-center fw-bold mb-5">
+
+        Почему выбирают нас?
+
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-3 mb-4">
+
+            <h1>🌹</h1>
+
+            <h5>Свежие цветы</h5>
+
+            <p class="text-muted">
+                Поставки каждый день от проверенных поставщиков.
+            </p>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <h1>🚚</h1>
+
+            <h5>Доставка</h5>
+
+            <p class="text-muted">
+                Быстро доставляем по всему Курску.
+            </p>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <h1>💝</h1>
+
+            <h5>Подарочное оформление</h5>
+
+            <p class="text-muted">
+                Каждая композиция оформляется вручную.
+            </p>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <h1>⭐</h1>
+
+            <h5>Качество</h5>
+
+            <p class="text-muted">
+                Мы заботимся о каждом заказе.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 {% endblock %}

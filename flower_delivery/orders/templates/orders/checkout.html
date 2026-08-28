@@ -1,29 +1,314 @@
 {% extends "base.html" %}
+
+{% block title %}
+Оформление заказа
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
-    <h2>Оформление заказа</h2>
 
-    <h4 class="mt-3">Ваши товары:</h4>
-    <ul class="list-group mb-4">
-        {% for item in request.user.cart.items.all %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div>
-                <strong>{{ item.product.name }}</strong><br>
-                Количество: {{ item.quantity }}
-            </div>
-            <span>{{ item.total }} ₽</span>
-        </li>
-        {% empty %}
-        <p>Корзина пуста.</p>
-        {% endfor %}
-    </ul>
+<div class="container py-5">
 
-    <h4>Итог: {{ request.user.cart.total_price }} ₽</h4>
+    <div class="text-center mb-5">
 
-    <form method="POST" class="mt-4">
+        <h1 class="display-5 fw-bold">
+            🌸 Оформление заказа
+        </h1>
+
+        <p class="text-muted">
+            Остался последний шаг до получения вашего букета
+        </p>
+
+    </div>
+
+    <form method="post">
+
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Подтвердить заказ</button>
+
+        <div class="row g-4">
+
+            <!-- ========================= -->
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <!-- ========================= -->
+
+            <div class="col-lg-7">
+
+                <div class="card shadow-lg border-0 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="fw-bold mb-4">
+                            📦 Данные доставки
+                        </h3>
+
+                        {{ form.non_field_errors }}
+
+
+                        <!-- Телефон -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ form.phone.id_for_label }}"
+                                class="form-label fw-semibold">
+
+                                📞 {{ form.phone.label }}
+
+                            </label>
+
+                            {{ form.phone }}
+
+                            {% if form.phone.errors %}
+
+                                <div class="text-danger small mt-2">
+                                    {{ form.phone.errors }}
+                                </div>
+
+                            {% endif %}
+
+                            <div class="form-text">
+                                По этому номеру курьер свяжется с вами
+                                для подтверждения заказа.
+                            </div>
+
+                        </div>
+
+
+                        <!-- Адрес -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ form.address.id_for_label }}"
+                                class="form-label fw-semibold">
+
+                                📍 {{ form.address.label }}
+
+                            </label>
+
+                            {{ form.address }}
+
+                            {% if form.address.errors %}
+
+                                <div class="text-danger small mt-2">
+                                    {{ form.address.errors }}
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- Комментарий -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ form.comment.id_for_label }}"
+                                class="form-label fw-semibold">
+
+                                💬 {{ form.comment.label }}
+
+                            </label>
+
+                            {{ form.comment }}
+
+                            {% if form.comment.errors %}
+
+                                <div class="text-danger small mt-2">
+                                    {{ form.comment.errors }}
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- Информация о доставке -->
+
+                        <div class="alert alert-success rounded-4">
+
+                            <h6 class="mb-2">
+                                🚚 Доставка
+                            </h6>
+
+                            <p class="mb-1">
+                                Ежедневно с
+                                <strong>08:00 до 22:00</strong>
+                            </p>
+
+                            <p class="mb-0">
+                                После оформления заказа мы свяжемся
+                                с вами для подтверждения.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <!-- ========================= -->
+
+            <div class="col-lg-5">
+
+                <div class="card shadow-lg border-0 rounded-4 sticky-top">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="fw-bold mb-4">
+                            🛒 Ваш заказ
+                        </h3>
+
+
+                        <!-- Товары -->
+
+                        {% for item in cart.items.all %}
+
+                        <div class="d-flex justify-content-between mb-3">
+
+                            <div class="pe-3">
+
+                                <strong>
+                                    {{ item.product.name }}
+                                </strong>
+
+                                <br>
+
+                                <small class="text-muted">
+
+                                    {{ item.quantity }}
+                                    ×
+                                    {{ item.product.price }} ₽
+
+                                </small>
+
+                            </div>
+
+                            <strong class="text-nowrap">
+
+                                {{ item.total }} ₽
+
+                            </strong>
+
+                        </div>
+
+                        {% endfor %}
+
+
+                        <hr>
+
+
+                        <!-- Количество товаров -->
+
+                        <div class="d-flex justify-content-between mb-2">
+
+                            <span>
+                                Товаров
+                            </span>
+
+                            <strong>
+                                {{ cart.items.count }}
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Доставка -->
+
+                        <div class="d-flex justify-content-between mb-2">
+
+                            <span>
+                                Доставка
+                            </span>
+
+                            <strong class="text-success">
+                                Бесплатно
+                            </strong>
+
+                        </div>
+
+
+                        <hr>
+
+
+                        <!-- Итого -->
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            <h4 class="mb-0">
+                                Итого
+                            </h4>
+
+                            <h2 class="text-success fw-bold mb-0">
+
+                                {{ cart.total_price }} ₽
+
+                            </h2>
+
+                        </div>
+
+
+                        <!-- Подтверждение -->
+
+                        <div class="d-grid mt-4">
+
+                            <button
+                                type="submit"
+                                class="btn btn-success btn-lg">
+
+                                🌷 Подтвердить заказ
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- Назад -->
+
+                        <div class="d-grid mt-3">
+
+                            <a
+                                href="{% url 'cart:cart_view' %}"
+                                class="btn btn-outline-secondary">
+
+                                ← Вернуться в корзину
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- Преимущества -->
+
+                        <div class="text-center mt-4">
+
+                            <small class="text-muted">
+
+                                ✔ Свежие цветы каждый день<br>
+
+                                ✔ Оплата при получении<br>
+
+                                ✔ Быстрая доставка по Курску
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </form>
+
 </div>
+
 {% endblock %}

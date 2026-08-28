@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}
+Оплата заказа №{{ order.id }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="text-center mb-4">
+
+                <h1 class="fw-bold">
+                    🌸 Заказ №{{ order.id }}
+                </h1>
+
+                <p class="text-muted">
+                    Заказ успешно оформлен
+                </p>
+
+            </div>
+
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+                        <h3 class="fw-bold">
+                            К оплате
+                        </h3>
+
+                        <div class="display-5 fw-bold text-success">
+                            {{ order.total_price }} ₽
+                        </div>
+
+                    </div>
+
+
+                    <div class="alert alert-warning rounded-4">
+
+                        <h5 class="fw-bold">
+                            💳 Оплата переводом
+                        </h5>
+
+                        <p class="mb-0">
+                            Переведите указанную сумму по номеру телефона.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card border-0 bg-light rounded-4 mb-4">
+
+                        <div class="card-body p-4">
+
+                            <p class="mb-2">
+                                📱
+                                <strong>Номер телефона:</strong>
+                            </p>
+
+                            <h4 class="fw-bold mb-3">
+                                {{ payment_phone }}
+                            </h4>
+
+
+                            <p class="mb-2">
+                                🏦
+                                <strong>Банк:</strong>
+                            </p>
+
+                            <p class="mb-3">
+                                {{ payment_bank }}
+                            </p>
+
+
+                            {% if payment_recipient %}
+
+                            <p class="mb-2">
+                                👤
+                                <strong>Получатель:</strong>
+                            </p>
+
+                            <p class="mb-0">
+                                {{ payment_recipient }}
+                            </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="alert alert-info rounded-4">
+
+                        <strong>Важно:</strong>
+
+                        <p class="mb-0 mt-2">
+                            После перевода нажмите кнопку
+                            «Я оплатил».
+                            Владелец магазина проверит поступление
+                            денежных средств и подтвердит оплату.
+                        </p>
+
+                    </div>
+
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-lg w-100 mb-3">
+
+                            💰 Я оплатил
+
+                        </button>
+
+                    </form>
+
+
+                    <a
+                        href="{% url 'orders:order_detail' order.id %}"
+                        class="btn btn-outline-secondary w-100">
+
+                        Вернуться к заказу
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+body{
+    background:red !important;
+}
+
+/* Навбар */
+
+.navbar{
+    background:#212529!important;
+}
+
+/* Карточки */
+
+.card{
+    border:none;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+/* Фото */
+
+.card img{
+    height:320px;
+    object-fit:cover;
+}
+
+/* Цена */
+
+.text-primary{
+    color:#2E7D32!important;
+}
+
+/* Кнопки */
+
+.btn-success{
+    background:#2E7D32;
+    border:none;
+}
+
+.btn-success:hover{
+    background:#256528;
+}
+
+/* Заголовки */
+
+h1,h2,h3,h4{
+    font-weight:700;
+}
+
+/* Footer */
+
+footer{
+    background:#212529;
+}
+
+/* =======================
+        Карточки
+======================= */
+
+.product-card{
+    border:none;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.35s;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.16);
+}
+
+.product-card img{
+    height:330px;
+    object-fit:cover;
+}
+
+.price{
+    color:#2E7D32;
+    font-weight:700;
+}
+
+.card-footer{
+    padding:20px;
+}
+
+/* =======================
+    Product Detail
+======================= */
+
+.img-fluid{
+    border-radius:20px;
+}
+
+.btn-success{
+    border-radius:10px;
+    padding:12px 20px;
+}
+
+.btn-outline-success{
+    border-radius:10px;
+}

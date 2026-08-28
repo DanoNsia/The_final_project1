@@ -1,39 +1,323 @@
 {% extends "base.html" %}
+
+{% block title %}
+Заказ №{{ order.id }}
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
-    <h2>Заказ №{{ order.id }}</h2>
 
-    <p><strong>Дата создания:</strong> {{ order.created_at|date:"d.m.Y H:i" }}</p>
-    <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
-    <p><strong>Адрес доставки:</strong> {{ order.address }}</p>
-    <p><strong>Комментарий:</strong> {{ order.comment|default:"—" }}</p>
+<div class="container py-5">
 
-    <h4 class="mt-4">Товары:</h4>
-    <ul class="list-group">
-        {% for item in order.items.all %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div>
-                <strong>{{ item.product.name }}</strong><br>
-                Количество: {{ item.quantity }}
-            </div>
-            <span>{{ item.total }} ₽</span>
-        </li>
-        {% endfor %}
-    </ul>
+    <a href="{% url 'orders:order_list' %}"
+       class="btn btn-outline-secondary mb-4">
 
-    <h3 class="mt-4">Итоговая сумма: {{ order.total_price }} ₽</h3>
-</div>
-<div class="mt-4 d-flex gap-2">
-    {% if order.status == "new" %}
-        <a href="{% url 'orders:cancel_order' order.id %}"
-           class="btn btn-danger">
-            Отменить заказ
-        </a>
-    {% endif %}
+        ← К моим заказам
 
-    <a href="{% url 'orders:repeat_order' order.id %}"
-       class="btn btn-primary">
-        Повторить заказ
     </a>
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-body p-5">
+
+            <!-- Заголовок -->
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+                <div>
+
+                    <h2 class="fw-bold mb-2">
+
+                        Заказ №{{ order.id }}
+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+
+                        {{ order.created_at|date:"d.m.Y H:i" }}
+
+                    </p>
+
+                </div>
+
+                <!-- Статус -->
+
+                <div>
+
+                    {% if order.status == "draft" %}
+
+                        <span class="badge bg-secondary fs-6">
+                            ⚪ Черновик
+                        </span>
+
+                    {% elif order.status == "new" %}
+
+                        <span class="badge bg-warning text-dark fs-6">
+                            🟡 Новый
+                        </span>
+
+                    {% elif order.status == "processing" %}
+
+                        <span class="badge bg-primary fs-6">
+                            🔵 В обработке
+                        </span>
+
+                    {% elif order.status == "done" %}
+
+                        <span class="badge bg-success fs-6">
+                            🟢 Выполнен
+                        </span>
+
+                    {% elif order.status == "canceled" %}
+
+                        <span class="badge bg-danger fs-6">
+                            🔴 Отменён
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Информация о доставке -->
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <h5>
+                        📞 Телефон
+                    </h5>
+
+                    <p class="mb-0">
+                        {{ order.phone|default:"Не указан" }}
+                    </p>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h5>
+                        📍 Адрес доставки
+                    </h5>
+
+                    <p class="mb-0">
+                        {{ order.address }}
+                    </p>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h5>
+                        💬 Комментарий
+                    </h5>
+
+                    <p class="mb-0">
+                        {{ order.comment|default:"Не указан" }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Состав заказа -->
+
+            <h4 class="mb-4">
+                🌸 Состав заказа
+            </h4>
+
+            {% for item in order.items.all %}
+
+            <div class="card mb-3 border-0 shadow-sm">
+
+                <div class="row g-0 align-items-center">
+
+                    <div class="col-md-3">
+
+                        {% if item.product.image %}
+
+                            <img src="{{ item.product.image.url }}"
+                                 class="img-fluid rounded-start"
+                                 style="height:180px; width:100%; object-fit:cover;"
+                                 alt="{{ item.product.name }}">
+
+                        {% elif item.product.image_url %}
+
+                            <img src="{{ item.product.image_url }}"
+                                 class="img-fluid rounded-start"
+                                 style="height:180px; width:100%; object-fit:cover;"
+                                 alt="{{ item.product.name }}">
+
+                        {% else %}
+
+                            <div class="d-flex align-items-center justify-content-center bg-light rounded-start"
+                                 style="height:180px;">
+
+                                <span class="text-muted">
+                                    🌸 Нет изображения
+                                </span>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <div class="card-body">
+
+                            <h5 class="fw-bold">
+
+                                {{ item.product.name }}
+
+                            </h5>
+
+                            <p class="text-muted mb-2">
+
+                                Цена:
+                                <strong>{{ item.product.price }} ₽</strong>
+
+                            </p>
+
+                            <p class="text-muted mb-2">
+
+                                Количество:
+                                <strong>{{ item.quantity }}</strong>
+
+                            </p>
+
+                            <h5 class="text-success fw-bold mb-0">
+
+                                {{ item.total }} ₽
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+            <hr class="my-4">
+
+            <!-- Итог -->
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <h3 class="mb-0">
+                    Итого
+                </h3>
+
+                <h2 class="text-success fw-bold mb-0">
+
+                    {{ order.total_price }} ₽
+
+                </h2>
+
+            </div>
+
+            <!-- Кнопки -->
+
+                     {% if order.payment_status == "waiting" %}
+
+<div class="alert alert-warning rounded-4 mt-4">
+
+    <h5 class="fw-bold">
+        💳 Заказ ожидает оплаты
+    </h5>
+
+    <p class="mb-3">
+        Сумма к оплате:
+        <strong>{{ order.total_price }} ₽</strong>
+    </p>
+
+    <a
+        href="{% url 'orders:payment' order.id %}"
+        class="btn btn-warning">
+
+        Перейти к оплате
+
+    </a>
+
 </div>
+
+{% elif order.payment_status == "checking" %}
+
+<div class="alert alert-info rounded-4 mt-4">
+
+    <h5 class="fw-bold">
+        🟡 Оплата проверяется
+    </h5>
+
+    <p class="mb-0">
+        Мы проверяем поступление денежных средств.
+    </p>
+
+</div>
+
+{% elif order.payment_status == "paid" %}
+
+<div class="alert alert-success rounded-4 mt-4">
+
+    <h5 class="fw-bold">
+        🟢 Заказ оплачен
+    </h5>
+
+    <p class="mb-0">
+        Оплата получена. Заказ передан в работу.
+    </p>
+
+</div>
+
+{% elif order.payment_status == "refunded" %}
+
+<div class="alert alert-secondary rounded-4 mt-4">
+
+    <h5 class="fw-bold">
+        ↩️ Оплата возвращена
+    </h5>
+
+</div>
+
+{% endif %}
+
+            <div class="d-flex gap-3 mt-4 flex-wrap">
+
+                <a href="{% url 'orders:repeat_order' order.id %}"
+                   class="btn btn-success btn-lg">
+
+                    🔄 Повторить заказ
+
+                </a>
+
+                {% if order.status == "new" or order.status == "processing" %}
+
+                    <a href="{% url 'orders:cancel_order' order.id %}"
+                       class="btn btn-outline-danger btn-lg"
+                       onclick="return confirm('Отменить заказ?');">
+
+                        ❌ Отменить
+
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

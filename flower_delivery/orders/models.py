@@ -4,6 +4,7 @@ from catalog.models import Product
 
 
 class Order(models.Model):
+
     STATUS_CHOICES = [
         ('draft', 'Черновик'),
         ('new', 'Новый'),
@@ -12,35 +13,84 @@ class Order(models.Model):
         ('canceled', 'Отменён'),
     ]
 
+    PAYMENT_STATUS_CHOICES = [
+        ('waiting', 'Ожидает оплаты'),
+        ('checking', 'Проверка оплаты'),
+        ('paid', 'Оплачен'),
+        ('refunded', 'Возврат'),
+    ]
+
+    payment_status = models.CharField(
+        max_length=20,
+        choices=PAYMENT_STATUS_CHOICES,
+        default="waiting"
+    )
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='orders'
     )
+
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
-    address = models.CharField(max_length=255, default="Не указан")  # дефолт для миграций
-    comment = models.TextField(blank=True, null=True)  # необязательное поле
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='new'
+    )
+
+    payment_status = models.CharField(
+        max_length=20,
+        choices=PAYMENT_STATUS_CHOICES,
+        default='waiting'
+    )
+
+    phone = models.CharField(
+        max_length=20,
+        default="Не указан"
+    )
+
+    address = models.CharField(
+        max_length=255,
+        default="Не указан"
+    )
+
+    comment = models.TextField(
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return f"Заказ #{self.id} от {self.user.username}"
 
     @property
     def total_price(self):
-        return sum(item.total for item in self.items.all())
+        return sum(
+            item.total for item in self.items.all()
+        )
 
 
 class OrderItem(models.Model):
+
     order = models.ForeignKey(
-        Order, related_name='items', on_delete=models.CASCADE
+        Order,
+        related_name='items',
+        on_delete=models.CASCADE
     )
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
+
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+    )
+
+    quantity = models.PositiveIntegerField(
+        default=1
+    )
 
     @property
     def total(self):
         return self.product.price * self.quantity
 
     def __str__(self):
-        return f"{self.product.name} x {self.quantity}"  # <-- здесь строка закрыта
-
+        return f"{self.product.name} x {self.quantity}"
