@@ -1,159 +1,158 @@
 [
-{
-  "model": "catalog.product",
-  "pk": 1,
-  "fields": {
-    "name": "в•ЁСЋС‡в€љ РЃСЋС‡СЋС‚в€љС…",
-    "description": "в”ґС”СЉС…Р„ С€С‡ 11 РЃСЋС‡СЋС‚в€љС— РЃСЋС‡",
-    "price": "1990.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_1.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.886Z",
-    "updated_at": "2026-08-02T10:12:05.751Z"
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Букет розовых роз",
+      "description": "Букет из 11 розовых роз",
+      "price": "1990.00",
+      "image": "products/Дари_цветы_1.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.886Z",
+      "updated_at": "2026-08-02T10:12:05.751Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Букет праздничный",
+      "description": "Букет праздничных роз в стильном оформлении",
+      "price": "1490.00",
+      "image": "products/букет_цветы_2.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.891Z",
+      "updated_at": "2026-08-02T10:13:53.706Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Букет красных и белых роз",
+      "description": "Букет из 11 роз 50-60 см",
+      "price": "1990.00",
+      "image": "products/букет_цветы_3.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.894Z",
+      "updated_at": "2026-08-02T10:15:57.330Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Букет Эквадорские розы",
+      "description": "Букет из 25 свежих эквадорских роз",
+      "price": "3990.00",
+      "image": "products/букет_цветы_4.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.897Z",
+      "updated_at": "2026-08-02T10:15:46.690Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Гирлянда",
+      "description": "Букет сирени",
+      "price": "1290.00",
+      "image": "products/Дари_цветы_5.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.901Z",
+      "updated_at": "2026-08-02T10:22:19.355Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Букет роскошный",
+      "description": "Букет из 19 роз",
+      "price": "2590.00",
+      "image": "products/Дари_цветы_6.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.904Z",
+      "updated_at": "2026-08-02T10:28:40.556Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Пионы",
+      "description": "Пионы",
+      "price": "2200.00",
+      "image": "products/Дари_цветы_2.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.907Z",
+      "updated_at": "2026-08-02T11:30:51.389Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Пионы",
+      "description": "Пионы",
+      "price": "3200.00",
+      "image": "products/букет_цветы_макет_2.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.910Z",
+      "updated_at": "2026-08-02T11:30:38.341Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Пионы",
+      "description": "Пионы",
+      "price": "1500.00",
+      "image": "products/букет_цветы_макет_3.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.913Z",
+      "updated_at": "2026-08-02T11:30:44.785Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "name": "Летний микс",
+      "description": "Яркая композиция из сезонных цветов, солнечные розы, нежные маттиолы, сочные диантусы и немного другого.",
+      "price": "2800.00",
+      "image": "products/Дари_цветы_макет_4.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.916Z",
+      "updated_at": "2025-08-02T11:26:13.412Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "name": "Корзина с цветами",
+      "description": "Большой букет на ваш вкус",
+      "price": "2222.00",
+      "image": "products/Дари_цветы_макет_5.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.919Z",
+      "updated_at": "2026-08-02T11:27:10.799Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "name": "101 роза Эквадор",
+      "description": "Самый шикарный букет",
+      "price": "16990.00",
+      "image": "products/Дари_цветы_макет_6.jpg",
+      "image_url": null,
+      "created_at": "2025-12-02T01:31:51.922Z",
+      "updated_at": "2026-08-02T11:30:12.939Z"
+    }
   }
-},
-{
-  "model": "catalog.product",
-  "pk": 2,
-  "fields": {
-    "name": "в•ЁСЋС‡в€љ Р‡РЃСЂСЌРЋС”С‡С‘СЉС€С…",
-    "description": "в”ґС”СЉС…Р„ Р‡РЃСЂСЌРЋС”С‡С‘СЉС€С— РЃСЋС‡ С‚ С‘Р„С€С‹в„–СЌСЋСЊ СЋР‡СЋРЃСЊС‹С…СЌС€С€",
-    "price": "1490.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_2.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.891Z",
-    "updated_at": "2026-08-02T10:13:53.706Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 3,
-  "fields": {
-    "name": "в•ЁСЋС‡в€љ СЉРЃСЂС‘СЌв€љС… С€ СЃС…С‹в€љС…",
-    "description": "СЃС”СЉС…Р„ С€С‡ 11 РЃСЋС‡ 50-60 С‘СЊ",
-    "price": "1990.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_3.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.894Z",
-    "updated_at": "2026-08-02T10:15:57.330Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 4,
-  "fields": {
-    "name": "в•ЁСЋС‡в€љ В¤СЉС‚СЂС„СЋРЃС‘СЉС€С…",
-    "description": "в”ґС”СЉС…Р„ С€С‡ 25 С‘С‚С…С†С€С— В¤СЉС‚СЂС„СЋРЃС‘СЉС€С— РЃСЋС‡",
-    "price": "3990.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_4.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.897Z",
-    "updated_at": "2026-08-02T10:15:46.690Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 5,
-  "fields": {
-    "name": "в•¤С€РЃС…СЌв„–",
-    "description": "в”ґС”СЉС…Р„ С‘С€РЃС…СЌС€",
-    "price": "1290.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_5.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.901Z",
-    "updated_at": "2026-08-02T10:22:19.355Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 6,
-  "fields": {
-    "name": "в•ЁСЋС‡в€љ РЃСЋС‘СЉСЋВ°СЌв€љС…",
-    "description": "в”ґС”СЉС…Р„ С€С‡ 19 РЃСЋС‡",
-    "price": "2590.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_6.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.904Z",
-    "updated_at": "2026-08-02T10:28:40.556Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 7,
-  "fields": {
-    "name": "СћР„СЋ",
-    "description": "СћР„СЋ",
-    "price": "2200.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_1.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.907Z",
-    "updated_at": "2026-08-02T11:30:51.389Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 8,
-  "fields": {
-    "name": "СћР„СЋ",
-    "description": "СћР„СЋ",
-    "price": "3200.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_2.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.910Z",
-    "updated_at": "2026-08-02T11:30:38.341Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 9,
-  "fields": {
-    "name": "СћР„СЋ",
-    "description": "СћР„СЋ",
-    "price": "1500.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_3.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.913Z",
-    "updated_at": "2026-08-02T11:30:44.785Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 10,
-  "fields": {
-    "name": "в•¦С…Р„СЌС€С‰ СЊС€СЉС‘",
-    "description": "в•§в€љВ°СЌСЂВ  СѓСЋРЃР„С…СЌС‡С€В ;\r\nС‘СЋС‹СЌС…СћСЌв€љС… РЃСЋС‡в€љ;\r\nСЌС…С†СЌв€љС… СЊСЂР„Р„С€СЋС‹в€љ;\r\nС‘СЋСћСЌв€љС… С„С€СЂСЌР„С”С‘в€љ С€ СЊСЌСЋСѓСЋС… С„РЃС”СѓСЋС….",
-    "price": "2800.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_4.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.916Z",
-    "updated_at": "2026-08-02T11:26:13.412Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 11,
-  "fields": {
-    "name": "в•©СЋРЃС‡С€СЌСЉСЂ С‘ РЋС‚С…Р„СЂСЊС€",
-    "description": "в•¤СЋСЃС…РЃв••СЊ СЌСЂ С‚СЂВ° С‚СЉС”С‘",
-    "price": "2222.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_5.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.919Z",
-    "updated_at": "2026-08-02T11:27:10.799Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 12,
-  "fields": {
-    "name": "101 РЃСЋС‡СЂ В¤СЉС‚СЂС„СЋРЃ",
-    "description": "в•¤СЂСЊв€љС‰ С†С…С‹СЂСЌСЌв€љС‰ СЃС”СЉС…Р„",
-    "price": "16990.00",
-    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_6.jpg",
-    "image_url": null,
-    "created_at": "2025-12-02T01:31:51.922Z",
-    "updated_at": "2026-08-02T11:30:12.939Z"
-  }
-}
 ]
-
