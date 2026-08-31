@@ -1,12 +1,12 @@
-﻿[
+[
 {
   "model": "catalog.product",
   "pk": 1,
   "fields": {
-    "name": "╨юч√ Ёючют√х",
-    "description": "┴єъхЄ шч 11 Ёючют√ї Ёюч",
+    "name": "в•ЁСЋС‡в€љ РЃСЋС‡СЋС‚в€љС…",
+    "description": "в”ґС”СЉС…Р„ С€С‡ 11 РЃСЋС‡СЋС‚в€љС— РЃСЋС‡",
     "price": "1990.00",
-    "image": "products/─рЁш_ЎтхЄ√_1.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_1.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.886Z",
     "updated_at": "2026-08-02T10:12:05.751Z"
@@ -16,10 +16,10 @@
   "model": "catalog.product",
   "pk": 2,
   "fields": {
-    "name": "╨юч√ ЇЁрэЎєчёъшх",
-    "description": "┴єъхЄ ЇЁрэЎєчёъшї Ёюч т ёЄшы№эюь юЇюЁьыхэшш",
+    "name": "в•ЁСЋС‡в€љ Р‡РЃСЂСЌРЋС”С‡С‘СЉС€С…",
+    "description": "в”ґС”СЉС…Р„ Р‡РЃСЂСЌРЋС”С‡С‘СЉС€С— РЃСЋС‡ С‚ С‘Р„С€С‹в„–СЌСЋСЊ СЋР‡СЋРЃСЊС‹С…СЌС€С€",
     "price": "1490.00",
-    "image": "products/─рЁш_ЎтхЄ√_2.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_2.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.891Z",
     "updated_at": "2026-08-02T10:13:53.706Z"
@@ -29,10 +29,10 @@
   "model": "catalog.product",
   "pk": 3,
   "fields": {
-    "name": "╨юч√ ъЁрёэ√х ш схы√х",
-    "description": "сєъхЄ шч 11 Ёюч 50-60 ёь",
+    "name": "в•ЁСЋС‡в€љ СЉРЃСЂС‘СЌв€љС… С€ СЃС…С‹в€љС…",
+    "description": "СЃС”СЉС…Р„ С€С‡ 11 РЃСЋС‡ 50-60 С‘СЊ",
     "price": "1990.00",
-    "image": "products/─рЁш_ЎтхЄ√_3.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_3.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.894Z",
     "updated_at": "2026-08-02T10:15:57.330Z"
@@ -42,10 +42,10 @@
   "model": "catalog.product",
   "pk": 4,
   "fields": {
-    "name": "╨юч√ ¤ътрфюЁёъшх",
-    "description": "┴єъхЄ шч 25 ётхцшї ¤ътрфюЁёъшї Ёюч",
+    "name": "в•ЁСЋС‡в€љ В¤СЉС‚СЂС„СЋРЃС‘СЉС€С…",
+    "description": "в”ґС”СЉС…Р„ С€С‡ 25 С‘С‚С…С†С€С— В¤СЉС‚СЂС„СЋРЃС‘СЉС€С— РЃСЋС‡",
     "price": "3990.00",
-    "image": "products/─рЁш_ЎтхЄ√_4.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_4.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.897Z",
     "updated_at": "2026-08-02T10:15:46.690Z"
@@ -55,10 +55,10 @@
   "model": "catalog.product",
   "pk": 5,
   "fields": {
-    "name": "╤шЁхэ№",
-    "description": "┴єъхЄ ёшЁхэш",
+    "name": "в•¤С€РЃС…СЌв„–",
+    "description": "в”ґС”СЉС…Р„ С‘С€РЃС…СЌС€",
     "price": "1290.00",
-    "image": "products/─рЁш_ЎтхЄ√_5.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_5.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.901Z",
     "updated_at": "2026-08-02T10:22:19.355Z"
@@ -68,10 +68,10 @@
   "model": "catalog.product",
   "pk": 6,
   "fields": {
-    "name": "╨юч√ Ёюёъю°э√х",
-    "description": "┴єъхЄ шч 19 Ёюч",
+    "name": "в•ЁСЋС‡в€љ РЃСЋС‘СЉСЋВ°СЌв€љС…",
+    "description": "в”ґС”СЉС…Р„ С€С‡ 19 РЃСЋС‡",
     "price": "2590.00",
-    "image": "products/─рЁш_ЎтхЄ√_6.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_6.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.904Z",
     "updated_at": "2026-08-02T10:28:40.556Z"
@@ -81,10 +81,10 @@
   "model": "catalog.product",
   "pk": 7,
   "fields": {
-    "name": "ўЄю",
-    "description": "ўЄю",
+    "name": "СћР„СЋ",
+    "description": "СћР„СЋ",
     "price": "2200.00",
-    "image": "products/─рЁш_ЎтхЄ√_ьръхЄ_1.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_1.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.907Z",
     "updated_at": "2026-08-02T11:30:51.389Z"
@@ -94,10 +94,10 @@
   "model": "catalog.product",
   "pk": 8,
   "fields": {
-    "name": "ўЄю",
-    "description": "ўЄю",
+    "name": "СћР„СЋ",
+    "description": "СћР„СЋ",
     "price": "3200.00",
-    "image": "products/─рЁш_ЎтхЄ√_ьръхЄ_2.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_2.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.910Z",
     "updated_at": "2026-08-02T11:30:38.341Z"
@@ -107,10 +107,10 @@
   "model": "catalog.product",
   "pk": 9,
   "fields": {
-    "name": "ўЄю",
-    "description": "ўЄю",
+    "name": "СћР„СЋ",
+    "description": "СћР„СЋ",
     "price": "1500.00",
-    "image": "products/─рЁш_ЎтхЄ√_ьръхЄ_3.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_3.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.913Z",
     "updated_at": "2026-08-02T11:30:44.785Z"
@@ -120,10 +120,10 @@
   "model": "catalog.product",
   "pk": 10,
   "fields": {
-    "name": "╦хЄэшщ ьшъё",
-    "description": "╧√°эр  уюЁЄхэчш ;\r\nёюыэхўэ√х Ёюч√;\r\nэхцэ√х ьрЄЄшюы√;\r\nёюўэ√х фшрэЄєё√ ш ьэюуюх фЁєуюх.",
+    "name": "в•¦С…Р„СЌС€С‰ СЊС€СЉС‘",
+    "description": "в•§в€љВ°СЌСЂВ  СѓСЋРЃР„С…СЌС‡С€В ;\r\nС‘СЋС‹СЌС…СћСЌв€љС… РЃСЋС‡в€љ;\r\nСЌС…С†СЌв€љС… СЊСЂР„Р„С€СЋС‹в€љ;\r\nС‘СЋСћСЌв€љС… С„С€СЂСЌР„С”С‘в€љ С€ СЊСЌСЋСѓСЋС… С„РЃС”СѓСЋС….",
     "price": "2800.00",
-    "image": "products/─рЁш_ЎтхЄ√_ьръхЄ_4.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_4.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.916Z",
     "updated_at": "2026-08-02T11:26:13.412Z"
@@ -133,10 +133,10 @@
   "model": "catalog.product",
   "pk": 11,
   "fields": {
-    "name": "╩юЁчшэър ё ЎтхЄрьш",
-    "description": "╤юсхЁ╕ь эр тр° тъєё",
+    "name": "в•©СЋРЃС‡С€СЌСЉСЂ С‘ РЋС‚С…Р„СЂСЊС€",
+    "description": "в•¤СЋСЃС…РЃв••СЊ СЌСЂ С‚СЂВ° С‚СЉС”С‘",
     "price": "2222.00",
-    "image": "products/─рЁш_ЎтхЄ√_ьръхЄ_5.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_5.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.919Z",
     "updated_at": "2026-08-02T11:27:10.799Z"
@@ -146,10 +146,10 @@
   "model": "catalog.product",
   "pk": 12,
   "fields": {
-    "name": "101 Ёючр ¤ътрфюЁ",
-    "description": "╤рь√щ цхырээ√щ сєъхЄ",
+    "name": "101 РЃСЋС‡СЂ В¤СЉС‚СЂС„СЋРЃ",
+    "description": "в•¤СЂСЊв€љС‰ С†С…С‹СЂСЌСЌв€љС‰ СЃС”СЉС…Р„",
     "price": "16990.00",
-    "image": "products/─рЁш_ЎтхЄ√_ьръхЄ_6.jpg",
+    "image": "products/в”ЂСЂРЃС€_РЋС‚С…Р„в€љ_СЊСЂСЉС…Р„_6.jpg",
     "image_url": null,
     "created_at": "2025-12-02T01:31:51.922Z",
     "updated_at": "2026-08-02T11:30:12.939Z"
